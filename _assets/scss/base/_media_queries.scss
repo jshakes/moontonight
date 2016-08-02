@@ -1,0 +1,53 @@
+$mqs: (
+  small-mobile: 460 / 16,
+  almost-mobile: 570 / 16,
+  mobile: 767 / 16,
+  tablet: 1024 / 16,
+  small-desktop: 1280 / 16,
+  medium-desktop: 1440 / 16,
+  desktop: 1500 / 16,
+);
+
+@mixin smaller-than($size) {
+  $width: #{map-get($mqs, $size)};
+  @include smaller-than-em($width) {
+    @content;
+  }
+}
+
+@mixin larger-than($size) {
+  $width: #{map-get($mqs, $size)};
+  @include larger-than-em($width) {
+    @content;
+  }
+}
+
+@mixin between($min, $max) {
+  $minwidth: #{map-get($mqs, $min)};
+  $maxwidth: #{map-get($mqs, $max)};
+  @include between-em($minwidth, $maxwidth) {
+    @content;
+  }
+}
+
+@mixin smaller-than-em($size) {
+  $width: #{1.0 * $size * $base-font-size * 1px};
+  @media (max-width: $width) {
+    @content;
+  }
+}
+
+@mixin larger-than-em($size) {
+  $width: #{1.0 * $size * $base-font-size * 1px};
+  @media (min-width: $width) {
+    @content;
+  }
+}
+
+@mixin between-em($min, $max) {
+  $minwidth: #{1.0 * $min * $base-font-size * 1px};
+  $maxwidth: #{1.0 * $max * $base-font-size * 1px};
+  @media (min-width: $minwidth) and (max-width: $maxwidth) {
+    @content;
+  }
+}

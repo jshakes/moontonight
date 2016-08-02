@@ -1,0 +1,20 @@
+domain: somadomain.com
+
+surge:
+  enabled: false
+  domain:  somadomain.com
+
+rsync:
+  enabled:          false
+  username:         remoteuser
+  destination:      /home/remoteuser/www/project
+  incremental:      true
+  progress:         true
+  relative:         true
+  emptyDirectories: true
+  recursive:        true
+  clean:            true
+  exclude:
+    - .DS_Store
+    - .git
+  include: []

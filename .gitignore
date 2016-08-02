@@ -1,5 +1,6 @@
-dist
-node_modules
-bower_components
 .DS_Store
+_site
 .sass-cache
+.jekyll-metadata
+*.sublime-*
+node_modules

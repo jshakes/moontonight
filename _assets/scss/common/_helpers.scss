@@ -1,0 +1,88 @@
+body.noscroll {
+  overflow: hidden;
+  position: fixed;
+}
+
+.textreplace {
+  display: block;
+  padding: 0;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.textreplace-sr {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+%fullsize, .fullsize {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+%defullsize {
+  position: static;
+  top: auto;
+  right: auto;
+  bottom: auto;
+  left: auto;
+}
+
+.test-overlay {
+  -webkit-filter:invert(100%);
+  filter:invert(100%);
+  filter:progid:DXImageTransform.Microsoft.BasicImage(invert='1');
+  position: absolute;
+  z-index: 999999;
+  opacity: .5;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+}
+
+@mixin remove-aspect-ratio() {
+  position: relative;
+  &:before {
+    display: none;
+  }
+}
+
+@function em($pixels, $dens: 1) {
+  @return $pixels / $base-font-size / $dens * 1em;
+}
+
+@function rem($pixels, $dens: 1) {
+  @return $pixels / $base-font-size / $dens * 1rem;
+}
+
+@function em2rem($em) {
+  @return deunit($em) * 1rem;
+}
+
+@function rem2em($rem) {
+  @return deunit($rem) * 1em;
+}
+
+@function deunit($value) {
+  @return $value / ($value * 0 + 1);
+}

@@ -1,0 +1,17 @@
+// CORE INCLUDES
+@import "base/normalize";
+@import "base/base";
+@import "common/webfonts";
+@import "common/helpers";
+@import "common/colors";
+@import "base/media_queries";
+@import "common/typography";
+// @import "common/svg_icons";
+@import "base/layout";
+
+// PAGE BLOCKS
+@import "blocks/header";
+@import "blocks/footer";
+
+// DEMO COMPONENTS
+@import "components/demo";

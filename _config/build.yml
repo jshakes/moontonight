@@ -1,0 +1,39 @@
+features:
+  css:
+    mode: scss
+    bundle: main.scss
+    enabled: true
+    minify:  true
+    autoprefix:
+      enabled: true
+      settings:
+        browsers:
+          - last 5 versions
+  js:
+    enabled:    true
+    browserify: true
+    minify:     true
+  jekyll:
+    enabled: true
+  notifications:
+    enabled: true
+  serve:
+    port:    8080
+    enabled: true
+
+paths:
+  components: components
+  source:
+    scss:   _assets/scss
+    less:   _assets/less
+    js:     _assets/js
+    images: _assets/images
+    fonts:  _assets/fonts
+  destination:
+    scss:   assets/css
+    less:   assets/css
+    js:     assets/js
+    images: assets/images
+    fonts:  assets/fonts
+  jsBundles:
+    - app.js
