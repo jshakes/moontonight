@@ -5,7 +5,7 @@ body {
   margin: 0;
 }
 
-$moon-size: 30vmin;
+$moon-size: 50vmin;
 
 @mixin moon($percent) {
   font-size: 0;
