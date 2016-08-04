@@ -1,18 +1,23 @@
 body {
   background: black;
   color: white;
+  text-align: center;
+  margin: 0;
 }
+
+$moon-size: 30vmin;
 
 @mixin moon($percent) {
   font-size: 0;
   display: inline-block;
-  width: 100vh;
-  margin: 2vh;
-  transform: rotate(180deg);
+  width: $moon-size;
+  &.northern-hemisphere {
+    transform: rotate(180deg);
+  }
   .half {
     display: inline-block;
-    width: 50vh;
-    height: 100vh;
+    width: $moon-size / 2;
+    height: $moon-size;
     overflow: hidden;
     position: relative;
     .ellipse {
@@ -25,6 +30,8 @@ body {
       &.black {
         background: black;
         z-index: 2;
+        border: 1px solid black;
+        margin-top: -1px
       }
       &.white {
         z-index: 1;

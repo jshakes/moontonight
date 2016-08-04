@@ -9,11 +9,16 @@ if ('geolocation' in navigator) {
   navigator.geolocation.getCurrentPosition(function(position) {
     const latlong = [position.coords.latitude, position.coords.longitude].join();
     getMoonPhase(latlong).then(function(data) {
-      const moonPhase = data.daily.data[0].moonPhase * 100;
-      let moonEl = document.getElementById('moon');
-      moonEl.setAttribute('class', `phase-${moonPhase}`);
+      const phase = data.daily.data[0].moonPhase * 100;
+      const hemisphere = position.coords.latitude > 0 ? 'north' : 'south';
+      setMoonClass(phase, hemisphere);
     });
   });
+}
+
+function setMoonClass(phase, hemisphere) {
+  let moonEl = document.getElementById('moon');
+  moonEl.setAttribute('class', `phase-${phase} ${hemisphere}ern-hemisphere`);
 }
 
 function getMoonPhase(latlong) {
