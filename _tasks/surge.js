@@ -5,6 +5,6 @@ export default function (gulp, settings) {
     return [];
   }
 
-  gulp.task('surge', (done) => cp.spawn('surge', ['-d', `${settings.deploy.domain}`, settings.main.destination], { stdio: 'inherit' }).on('close', done));
+  gulp.task('surge', (done) => cp.spawn('surge', ['-d', `${settings.deploy.surge.domain}`, settings.main.destination], { stdio: 'inherit' }).on('close', done));
   return ['surge'];
 }

@@ -1,8 +1,8 @@
 domain: somadomain.com
 
 surge:
-  enabled: false
-  domain:  somadomain.com
+  enabled: true
+  domain:  moontonight.surge.sh
 
 rsync:
   enabled:          false

@@ -43,12 +43,21 @@ export default function (gulp, settings) {
             loader: 'babel',
             exclude: /(node_modules|bower_components)/,
             query: babelConfig,
-          },
+          }, {
+            test: /\.json$/,
+            loader: "json-loader"
+          }
         ],
       },
       resolve: {
         extensions: ['', '.js', '.jsx'],
       },
+      node: {
+        console: 'empty',
+        fs: 'empty',
+        net: 'empty',
+        tls: 'empty'
+      }
     };
 
     if (!minify) {
