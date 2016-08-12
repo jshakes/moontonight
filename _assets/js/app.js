@@ -19,7 +19,8 @@ if ('geolocation' in navigator) {
 
 function setMoonClass(phase, hemisphere) {
   let moonEl = document.getElementById('moon');
-  moonEl.setAttribute('class', `phase-${phase} ${hemisphere}ern-hemisphere`);
+  let nearestPhase = Math.round(phase);
+  moonEl.setAttribute('class', `phase-${nearestPhase} ${hemisphere}ern-hemisphere`);
 }
 
 function getPhaseName(phase) {
