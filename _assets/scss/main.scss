@@ -21,6 +21,7 @@ $moon-size: 50vmin;
     overflow: hidden;
     position: relative;
     .ellipse {
+      transition: width, 0.1s;
       position: absolute;
       width: 200%;
       height: 100%;

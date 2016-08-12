@@ -4,47 +4,68 @@ import reqwest from 'reqwest';
 const darkskyKey = '83d3e85b9c73240c30a19c7421f3e752';
 const darkskyApiServer = 'https://api.forecast.io';
 const darkskyApiRoute = 'forecast';
+let forecast = [];
+let dayPointer = 0;
+let hemisphere;
  
 if ('geolocation' in navigator) {
   navigator.geolocation.getCurrentPosition(function(position) {
     const latlong = [position.coords.latitude, position.coords.longitude].join();
-    getMoonPhase(latlong).then(function(data) {
-      const phase = data.daily.data[0].moonPhase * 100;
-      const hemisphere = position.coords.latitude > 0 ? 'north' : 'south';
-      setMoonClass(phase, hemisphere);
-      document.getElementById('phase-name').innerHTML = getPhaseName(phase);
+    fetchForecast(latlong).then(function(data) {
+      forecast = data.daily.data;
+      hemisphere = position.coords.latitude > 0 ? 'north' : 'south';
+      render(dayPointer);
     });
   });
 }
 
-function setMoonClass(phase, hemisphere) {
-  let moonEl = document.getElementById('moon');
-  let nearestPhase = Math.round(phase);
-  moonEl.setAttribute('class', `phase-${nearestPhase} ${hemisphere}ern-hemisphere`);
-}
+function render(pointer) {
 
-function getPhaseName(phase) {
-  switch(true) {
-    case (phase < 12.5):
-      return 'New moon';
-    case (phase < 25):
-      return 'Waxing crescent';
-    case (phase < 37.5):
-      return 'First quarter';
-    case (phase < 50):
-      return 'Waxing gibbous';
-    case (phase < 62.5):
-      return 'Full moon';
-    case (phase < 75):
-      return 'Waning gibbous';
-    case (phase < 87.5):
-      return 'Last quarter';
-    case (phase < 100):
-      return 'Waning crescent';
+  let phasePerc = Math.round(forecast[pointer].moonPhase * 100);
+  setMoonClass();
+  setDateEl();
+  setPhaseName();
+
+  function setMoonClass() {
+    let moonEl = document.getElementById('moon');
+    moonEl.setAttribute('class', `phase-${phasePerc} ${hemisphere}ern-hemisphere`);
+  }
+  
+  function setDateEl() {
+    let date = new Date();
+    let dateEl = document.getElementById('date');
+    date.setDate(date.getDate() + pointer);
+    dateEl.innerHTML = date.toDateString();
+  }
+  
+  function setPhaseName() {
+    let phaseNameEl = document.getElementById('phase-name');
+    phaseNameEl.innerHTML = getPhaseName(phasePerc);
+  }
+
+  function getPhaseName(phase) {
+    switch(true) {
+      case (phase < 12.5):
+        return 'New moon';
+      case (phase < 25):
+        return 'Waxing crescent';
+      case (phase < 37.5):
+        return 'First quarter';
+      case (phase < 50):
+        return 'Waxing gibbous';
+      case (phase < 62.5):
+        return 'Full moon';
+      case (phase < 75):
+        return 'Waning gibbous';
+      case (phase < 87.5):
+        return 'Last quarter';
+      case (phase < 100):
+        return 'Waning crescent';
+    }
   }
 }
 
-function getMoonPhase(latlong) {
+function fetchForecast(latlong) {
   
   const url = [darkskyApiServer, darkskyApiRoute, darkskyKey, latlong].join('/');
   
@@ -53,3 +74,13 @@ function getMoonPhase(latlong) {
     type: 'jsonp'
   });
 }
+
+document.getElementById('next-day').addEventListener('click', function() {
+  dayPointer = dayPointer < forecast.length - 1 ? dayPointer + 1 : dayPointer;
+  render(dayPointer);
+});
+
+document.getElementById('prev-day').addEventListener('click', function() {
+  dayPointer = dayPointer > 0 ? dayPointer - 1 : 0;
+  render(dayPointer);
+});
