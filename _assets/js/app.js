@@ -9,6 +9,7 @@ let forecast = [];
 let dayPointer = 0;
 let hemisphere;
  
+// try to get user's location automatically, otherwise have them type it in
 if ('geolocation' in navigator) {
   $('body').addClass('loading');
   navigator.geolocation.getCurrentPosition(function(position) {
@@ -20,7 +21,7 @@ else {
 }
 
 function initAutocomplete() {
-  $('.location-finder').show();
+  $('body').addClass('show-location-finder');
   let input = document.getElementById('location-finder-input');
   let options = {
     types: ['(cities)']
@@ -29,9 +30,9 @@ function initAutocomplete() {
   autocomplete.addListener('place_changed', function() {
     let place = autocomplete.getPlace();
     $('body').addClass('loading');
-    $('.location-finder').hide();
-    fetchAndRender(place.geometry.location.latitude, place.geometry.location.longitude);
-  }); 
+    $('body').removeClass('show-location-finder');
+    fetchAndRender(place.geometry.location.lat(), place.geometry.location.lng());
+  });
 }
 
 function fetchAndRender(latitude, longitude) {
