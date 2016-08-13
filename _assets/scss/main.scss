@@ -85,3 +85,7 @@ $moon-size: 50vmin;
     @include moon($i);
   }
 }
+
+.location-finder {
+  display: none;
+}

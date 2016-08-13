@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import Promise from 'bluebird';
 import reqwest from 'reqwest';
 
@@ -9,22 +10,39 @@ let dayPointer = 0;
 let hemisphere;
  
 if ('geolocation' in navigator) {
+  $('body').addClass('loading');
   navigator.geolocation.getCurrentPosition(function(position) {
-    const latlong = [position.coords.latitude, position.coords.longitude].join();
-    fetchForecast(latlong).then(function(data) {
-      forecast = data.daily.data;
-      hemisphere = position.coords.latitude > 0 ? 'north' : 'south';
-      render(dayPointer);
-    });
-  });
+    fetchAndRender(position.coords.latitude, position.coords.longitude);
+  }, initAutocomplete);
+}
+else {
+  initAutocomplete();
 }
 
-let input = document.getElementById('location-finder-input');
-let options = {
-  types: ['(cities)']
-};
+function initAutocomplete() {
+  $('.location-finder').show();
+  let input = document.getElementById('location-finder-input');
+  let options = {
+    types: ['(cities)']
+  };
+  let autocomplete = new google.maps.places.Autocomplete(input, options);
+  autocomplete.addListener('place_changed', function() {
+    let place = autocomplete.getPlace();
+    $('body').addClass('loading');
+    $('.location-finder').hide();
+    fetchAndRender(place.geometry.location.latitude, place.geometry.location.longitude);
+  }); 
+}
 
-let autocomplete = new google.maps.places.Autocomplete(input, options);
+function fetchAndRender(latitude, longitude) {
+  const latlong = [latitude, longitude].join();
+  fetchForecast(latlong).then(function(data) {
+    forecast = data.daily.data;
+    hemisphere = latitude > 0 ? 'north' : 'south';
+    render(dayPointer);
+    $('body').removeClass('loading');
+  });
+}
 
 function render(pointer) {
 
