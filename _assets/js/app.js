@@ -19,12 +19,20 @@ if ('geolocation' in navigator) {
   });
 }
 
+let input = document.getElementById('location-finder-input');
+let options = {
+  types: ['(cities)']
+};
+
+let autocomplete = new google.maps.places.Autocomplete(input, options);
+
 function render(pointer) {
 
   let phasePerc = Math.round(forecast[pointer].moonPhase * 100);
   setMoonClass();
   setDateEl();
   setPhaseName();
+  setButtonDisability();
 
   function setMoonClass() {
     let moonEl = document.getElementById('moon');
@@ -42,6 +50,21 @@ function render(pointer) {
     let phaseNameEl = document.getElementById('phase-name');
     phaseNameEl.innerHTML = getPhaseName(phasePerc);
   }
+  
+  function setButtonDisability() {
+    if(pointer === 0) {
+      document.getElementById('prev-day').setAttribute('disabled', true);
+    }
+    else {
+      document.getElementById('prev-day').removeAttribute('disabled');
+    }
+    if(pointer + 1 === forecast.length) {
+      document.getElementById('next-day').setAttribute('disabled', true);
+    }
+    else {
+      document.getElementById('next-day').removeAttribute('disabled');
+    }
+  }
 
   function getPhaseName(phase) {
     switch(true) {
@@ -51,9 +74,9 @@ function render(pointer) {
         return 'Waxing crescent';
       case (phase < 37.5):
         return 'First quarter';
-      case (phase < 50):
+      case (phase < 49):
         return 'Waxing gibbous';
-      case (phase < 62.5):
+      case (phase < 52):
         return 'Full moon';
       case (phase < 75):
         return 'Waning gibbous';
