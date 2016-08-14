@@ -122,12 +122,33 @@ function fetchForecast(latlong) {
   });
 }
 
-document.getElementById('next-day').addEventListener('click', function() {
+function nextDay() {
   dayPointer = dayPointer < forecast.length - 1 ? dayPointer + 1 : dayPointer;
   render(dayPointer);
+}
+
+function prevDay() {
+  dayPointer = dayPointer > 0 ? dayPointer - 1 : 0;
+  render(dayPointer);
+}
+
+document.getElementById('next-day').addEventListener('click', function() {
+  nextDay();
 });
 
 document.getElementById('prev-day').addEventListener('click', function() {
-  dayPointer = dayPointer > 0 ? dayPointer - 1 : 0;
-  render(dayPointer);
+  prevDay();
+});
+
+document.addEventListener('keydown', function(event) {
+  if(event.target === document.getElementById('location-finder-input')) {
+    return;
+  }
+  window.console.log(event);
+  if(event.keyCode === 39) {
+    nextDay();
+  }
+  else if(event.keyCode === 37) {
+    prevDay();
+  }
 });
