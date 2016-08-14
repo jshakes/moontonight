@@ -30,3 +30,32 @@
     }
   }
 }
+
+.pac-container {
+  background-color: transparent;
+  box-shadow: none;
+  font-family: inherit;
+  border-radius: 0;
+  border: 0;
+  padding: 1em 0.75em 0;
+  &:after {
+    content: none;
+  }
+  .pac-item {
+    font-size: 1em;
+    border-top: none;
+    padding: 0 0 1em;
+    cursor: pointer;
+    &:hover {
+      background-color: transparent;
+      text-decoration: underline;
+    }
+  }
+  .pac-icon-marker {
+    display: none;
+  }
+  .pac-item-query {
+    font-size: 1em;
+    color: white;
+  }
+}
