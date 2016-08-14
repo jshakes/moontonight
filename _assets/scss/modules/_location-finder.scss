@@ -2,6 +2,7 @@
   @extend .overlay;
   display: none;
   width: 100%;
+  z-index: 4;
   .show-location-finder & {
     display: block; 
   }
