@@ -27,12 +27,11 @@ $moon-size: 50vmin;
       &.black {
         background: $background-color;
         z-index: 2;
-        border: 1px solid $background-color;
-        margin-top: -1px
       }
       &.white {
         z-index: 1;
         transition: width, 0.1s;
+        border: 1px solid $background-color;
       }
     }
     &:first-child .ellipse {
