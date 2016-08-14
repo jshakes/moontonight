@@ -1,6 +1,6 @@
 // Font stacks
 
-$sans-serif: 'Montserrat', sans-serif;
+$sans-serif: 'Reader', sans-serif;
 
 // Nicer font rendering for Chrome and FF
 
@@ -13,13 +13,11 @@ $sans-serif: 'Montserrat', sans-serif;
  
 @font-face {
   font-family: Reader;
-  src: url('../fonts/reader/reader-regular-web.eot');
-  src: url('../fonts/reader/reader-regular-web.eot?#iefix') format('embedded-opentype'),
-       url('../fonts/reader/reader-regular-web.woff2') format('woff2'),
-       url('../fonts/reader/reader-regular-web.woff') format('woff'),
-       url('../fonts/reader/reader-regular-web.ttf')  format('truetype'),
-       url('../fonts/reader/reader-regular-web.svg#reader-regular-web') format('svg');
+  src: url('../fonts/reader-regular-web.eot');
+  src: url('../fonts/reader-regular-web.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/reader-regular-web.woff2') format('woff2'),
+       url('../fonts/reader-regular-web.woff') format('woff'),
+       url('../fonts/reader-regular-web.ttf')  format('truetype'),
+       url('../fonts/reader-regular-web.svg#reader-regular-web') format('svg');
   font-weight: 400;
 }
-
-@import 'https://fonts.googleapis.com/css?family=Montserrat';
