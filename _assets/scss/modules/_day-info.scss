@@ -1,8 +1,12 @@
 .day-info-wrapper {
   display: flex;
-  width: 50%;
   margin: 4em auto 0;
+  padding: 0 2em;
   max-width: 30em;
+  @include larger-than(mobile) {
+    width: 50%;  
+    padding: 0;
+  }
 }
 
 .day-info {

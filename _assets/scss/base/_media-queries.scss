@@ -1,0 +1,22 @@
+// =========================
+// Media Query Definitions
+// =========================
+
+// All units in ems
+$mqs: (
+  mobile: 48, // 768
+);
+
+@mixin larger-than($size) {
+  $width: #{map-get($mqs, $size) * $base-font-size * 1px};
+  @media (min-width: $width) {
+    @content;
+  }
+}
+
+@mixin smaller-than($size) {
+  $width: #{map-get($mqs, $size) * $base-font-size * 1px - 1};
+  @media (max-width: $width) {
+    @content;
+  }
+}
