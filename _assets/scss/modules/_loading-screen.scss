@@ -10,8 +10,9 @@
 .satellite-loader {
   @include aspect-ratio(465, 540);
   display: inline-block;
-  animation: satellite 0.5s steps(4) infinite;
-  width: 10em;
+  animation: satellite 1s steps(4) infinite;
+  width: 8em;
+  transform: scale(0.5);
   background-image: url('/assets/images/satellite-loading.png');
   background-size: cover;
   background-position: 0 0;
