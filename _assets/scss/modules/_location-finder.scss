@@ -1,6 +1,32 @@
 .location-finder {
+  @extend .overlay;
   display: none;
+  width: 100%;
   .show-location-finder & {
     display: block; 
+  }
+  .location-finder-fields {
+    @extend .absolute-center;
+    text-align: left;
+    width: 75%;
+  }
+  label {
+    display: block;
+    font-size: 2em;
+    margin-bottom: 0.25em;
+  }
+  input {
+    font-size: 1em;
+    font-family: inherit;
+    background: transparent;
+    color: inherit;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 0.75em;
+    width: 100%;
+    &:focus {
+      outline: 0;
+    }
   }
 }

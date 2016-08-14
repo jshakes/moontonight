@@ -22,9 +22,9 @@ $moon-size: 50vmin;
       border-radius: 100%;
       transition-timing-function: linear;
       &.black {
-        background: black;
+        background: $background-color;
         z-index: 2;
-        border: 1px solid black;
+        border: 1px solid $background-color;
         margin-top: -1px
       }
       &.white {
