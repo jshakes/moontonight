@@ -14,7 +14,6 @@ $moon-size: 50vmin;
     overflow: hidden;
     position: relative;
     .ellipse {
-      transition: width, 0.1s;
       position: absolute;
       width: 200%;
       height: 100%;
@@ -29,6 +28,7 @@ $moon-size: 50vmin;
       }
       &.white {
         z-index: 1;
+        transition: width, 0.1s;
       }
     }
     &:first-child .ellipse {
@@ -46,7 +46,7 @@ $moon-size: 50vmin;
         @if($percent >= 50 and $percent < 75) {
           left: #{($percent - 50) * 4%};
           width: #{(75 - $percent) * 8%};
-        } 
+        }
       }
     }
     &:last-child .ellipse {
@@ -57,6 +57,9 @@ $moon-size: 50vmin;
           width: #{($percent - 25) * 8%};
           z-index: 3;
         }
+        @if($percent < 50 and $percent > 46) {
+          transition: none;
+        } 
       }
       &.black {
         @if($percent >= 50 and $percent < 75) {
