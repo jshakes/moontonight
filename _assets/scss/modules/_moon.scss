@@ -1,0 +1,80 @@
+$moon-size: 50vmin;
+
+@mixin moon($percent) {
+  font-size: 0;
+  display: inline-block;
+  width: $moon-size;
+  &.northern-hemisphere {
+    transform: rotate(180deg);
+  }
+  .half {
+    display: inline-block;
+    width: $moon-size / 2;
+    height: $moon-size;
+    overflow: hidden;
+    position: relative;
+    .ellipse {
+      transition: width, 0.1s;
+      position: absolute;
+      width: 200%;
+      height: 100%;
+      background: white;
+      border-radius: 100%;
+      transition-timing-function: linear;
+      &.black {
+        background: black;
+        z-index: 2;
+        border: 1px solid black;
+        margin-top: -1px
+      }
+      &.white {
+        z-index: 1;
+      }
+    }
+    &:first-child .ellipse {
+      &.black {
+        @if($percent > 25 and $percent <= 75) {
+          width: 0;
+          left: 100%;
+        }
+        @if($percent <= 25) {
+          left: #{100 - ((50 -$percent * 2) * 2%)};
+          width: #{(50 -$percent * 2) * 4%};
+        }
+      }
+      &.white {
+        @if($percent >= 50 and $percent < 75) {
+          left: #{($percent - 50) * 4%};
+          width: #{(75 - $percent) * 8%};
+        } 
+      }
+    }
+    &:last-child .ellipse {
+      left: -100%;
+      &.white {
+        @if($percent >= 25 and $percent < 50) {
+          left: #{($percent - 25) * -4%};
+          width: #{($percent - 25) * 8%};
+          z-index: 3;
+        }
+      }
+      &.black {
+        @if($percent >= 50 and $percent < 75) {
+          left: 100%;
+          width: 0;
+          transition: none;
+        }
+        @if($percent >= 75) {
+          left: #{(75 - $percent) * 4%};
+          width: #{($percent - 75) * 8%};
+        }
+      }
+    }
+  }
+}
+
+@for $i from 0 through 100 {
+  .phase-#{$i} {
+    @include moon($i);
+  }
+}

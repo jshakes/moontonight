@@ -1,0 +1,6 @@
+.location-finder {
+  display: none;
+  .show-location-finder & {
+    display: block; 
+  }
+}

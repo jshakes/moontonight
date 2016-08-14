@@ -1,0 +1,25 @@
+// Font stacks
+
+$sans-serif: 'Montserrat', sans-serif;
+
+// Nicer font rendering for Chrome and FF
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// @font-face imports
+ 
+@font-face {
+  font-family: Reader;
+  src: url('../fonts/reader/reader-regular-web.eot');
+  src: url('../fonts/reader/reader-regular-web.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/reader/reader-regular-web.woff2') format('woff2'),
+       url('../fonts/reader/reader-regular-web.woff') format('woff'),
+       url('../fonts/reader/reader-regular-web.ttf')  format('truetype'),
+       url('../fonts/reader/reader-regular-web.svg#reader-regular-web') format('svg');
+  font-weight: 400;
+}
+
+@import 'https://fonts.googleapis.com/css?family=Montserrat';
