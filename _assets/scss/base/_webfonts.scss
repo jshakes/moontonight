@@ -21,3 +21,14 @@ $sans-serif: 'Reader', sans-serif;
        url('../fonts/reader-regular-web.svg#reader-regular-web') format('svg');
   font-weight: 400;
 }
+
+@font-face {
+    font-family: icomoon;
+    src: url('../fonts/icomoon.eot?93sliu');
+    src: url('../fonts/icomoon.eot?93sliu#iefix') format('embedded-opentype'),
+         url('../fonts/icomoon.ttf?93sliu') format('truetype'),
+         url('../fonts/icomoon.woff?93sliu') format('woff'),
+         url('../fonts/icomoon.svg?93sliu#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

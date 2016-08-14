@@ -13,19 +13,24 @@ bodyclass: homepage
   </div>
 </div>
 
-<div id="moon">
-  <div class="half">
-    <div class="ellipse white"></div>
-    <div class="ellipse black"></div>
+<div class="moon-wrapper">
+  <div id="moon">
+    <div class="half">
+      <div class="ellipse white"></div>
+      <div class="ellipse black"></div>
+    </div>
+    <div class="half">
+      <div class="ellipse white"></div>
+      <div class="ellipse black"></div>
+    </div>
   </div>
-  <div class="half">
-    <div class="ellipse white"></div>
-    <div class="ellipse black"></div>
+  <div class="day-info-wrapper">
+    <button type="button" id="prev-day" class="day-info-prev"></button>
+    <div class="day-info">
+      <h3 class="day-info-date" id="date"></h3>
+      <h2 class="day-info-phase-name" id="phase-name"></h2>
+      <p class="day-info-cloud-warning">Warning: It may be too cloudy to see the moon tonight</p>
+    </div>
+    <button type="button" id="next-day" class="day-info-next"></button>
   </div>
 </div>
-<h3 id="date"></h3>
-<h2 id="phase-name"></h2>
-<p class="cloud-cover-warning">Warning: It may be too cloudy to see the moon tonight</p>
-<button type="button" id="prev-day">Previous</button>
-<button type="button" id="next-day">Next</button>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBD6Cf0D8dK2xgP9axsGvsIAiUHUamoig&libraries=places"></script>

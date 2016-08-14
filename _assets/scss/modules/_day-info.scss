@@ -1,0 +1,52 @@
+.day-info-wrapper {
+  display: flex;
+  width: 50%;
+  margin: 0 auto;
+  max-width: 30em;
+}
+
+.day-info {
+  flex-grow: 1;
+  padding: 5em 0;
+}
+
+.day-info-date {
+  font-size: 1em;
+  margin: 0 0 1em;
+}
+.day-info-phase-name {
+  font-size: 1.5em;
+  margin: 0;  
+}
+
+.day-info-prev,
+.day-info-next {
+  background: none;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5em;
+  opacity: 0.75;
+  &[disabled],
+  &[disabled]:hover {
+    visibility: hidden;
+  }
+  &:hover {
+    opacity: 1;
+  }
+  &:focus {
+    outline: 0;
+  }
+}
+
+.day-info-prev {
+  @include icon(arrow-left);
+}
+
+.day-info-next {
+  @include icon(arrow-right);
+}
+
+.day-info-cloud-warning {
+  display: none;
+}
