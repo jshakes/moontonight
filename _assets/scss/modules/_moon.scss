@@ -1,5 +1,9 @@
 $moon-size: 50vmin;
 
+.moon-wrapper {
+  @extend %vc-wrapper;
+}
+
 @mixin moon($percent) {
   font-size: 0;
   display: inline-block;

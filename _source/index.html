@@ -1,36 +1,40 @@
 ---
-bodyclass: homepage
+bodyclass: loading
 ---
 
 <div class="loading-screen">
-  <div class="satellite-loader"></div>
+  <div>
+    <div class="satellite-loader"></div>
+  </div>
 </div>
 
 <div class="location-finder">
   <div class="location-finder-fields">
     <label for="location-finder-input">Where are you?</label>
-    <input type="text" id="location-finder-input" placeholder="Enter your nearest city or town">
+    <input type="text" id="js-location-finder-input" placeholder="Enter your nearest city or town">
   </div>
 </div>
 
 <div class="moon-wrapper">
-  <div id="moon">
-    <div class="half">
-      <div class="ellipse white"></div>
-      <div class="ellipse black"></div>
+  <div class="moon-container">
+    <div class="moon-illustration" id="js-moon">
+      <div class="half">
+        <div class="ellipse white"></div>
+        <div class="ellipse black"></div>
+      </div>
+      <div class="half">
+        <div class="ellipse white"></div>
+        <div class="ellipse black"></div>
+      </div>
     </div>
-    <div class="half">
-      <div class="ellipse white"></div>
-      <div class="ellipse black"></div>
+    <div class="day-info-wrapper">
+      <button type="button" id="js-prev-day" class="day-info-prev"></button>
+      <div class="day-info">
+        <h3 class="day-info-date" id="js-date"></h3>
+        <h2 class="day-info-phase-name" id="js-phase-name"></h2>
+        <p class="day-info-cloud-warning" id="js-cloud-warning">Warning: It may be too cloudy to see the moon tonight</p>
+      </div>
+      <button type="button" id="js-next-day" class="day-info-next"></button>
     </div>
-  </div>
-  <div class="day-info-wrapper">
-    <button type="button" id="prev-day" class="day-info-prev"></button>
-    <div class="day-info">
-      <h3 class="day-info-date" id="date"></h3>
-      <h2 class="day-info-phase-name" id="phase-name"></h2>
-      <p class="day-info-cloud-warning">Warning: It may be too cloudy to see the moon tonight</p>
-    </div>
-    <button type="button" id="next-day" class="day-info-next"></button>
   </div>
 </div>

@@ -1,13 +1,13 @@
 .day-info-wrapper {
   display: flex;
   width: 50%;
-  margin: 0 auto;
+  margin: 4em auto 0;
   max-width: 30em;
 }
 
 .day-info {
   flex-grow: 1;
-  padding: 5em 0;
+  padding: 0 2em;
 }
 
 .day-info-date {

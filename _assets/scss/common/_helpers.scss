@@ -69,6 +69,18 @@ body.noscroll {
   transform: translateX(-50%);
 }
 
+// vertical center
+%vc-wrapper {
+  display: table;
+  width: 100%;
+  height: 100%;
+  > * {
+    display: table-cell;
+    vertical-align: middle;
+  }
+}
+
+
 @mixin aspect-ratio($width, $height) {
   position: relative;
   &:before {

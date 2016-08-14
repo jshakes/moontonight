@@ -22,7 +22,7 @@ else {
 
 function initAutocomplete() {
   $('body').addClass('show-location-finder');
-  let input = document.getElementById('location-finder-input');
+  let input = document.getElementById('js-location-finder-input');
   let options = {
     types: ['(cities)']
   };
@@ -55,39 +55,39 @@ function render(pointer) {
   toggleCloudCoverWarning();
 
   function setMoonClass() {
-    let moonEl = document.getElementById('moon');
+    let moonEl = document.getElementById('js-moon');
     moonEl.setAttribute('class', `phase-${phasePerc} ${hemisphere}ern-hemisphere`);
   }
   
   function setDateEl() {
     let date = new Date();
-    let dateEl = document.getElementById('date');
+    let dateEl = document.getElementById('js-date');
     date.setDate(date.getDate() + pointer);
     dateEl.innerHTML = date.toDateString();
   }
   
   function setPhaseName() {
-    let phaseNameEl = document.getElementById('phase-name');
+    let phaseNameEl = document.getElementById('js-phase-name');
     phaseNameEl.innerHTML = getPhaseName(phasePerc);
   }
   
   function setButtonDisability() {
     if(pointer === 0) {
-      document.getElementById('prev-day').setAttribute('disabled', true);
+      document.getElementById('js-prev-day').setAttribute('disabled', true);
     }
     else {
-      document.getElementById('prev-day').removeAttribute('disabled');
+      document.getElementById('js-prev-day').removeAttribute('disabled');
     }
     if(pointer + 1 === forecast.length) {
-      document.getElementById('next-day').setAttribute('disabled', true);
+      document.getElementById('js-next-day').setAttribute('disabled', true);
     }
     else {
-      document.getElementById('next-day').removeAttribute('disabled');
+      document.getElementById('js-next-day').removeAttribute('disabled');
     }
   }
   
   function toggleCloudCoverWarning() {
-    $('.cloud-cover-warning').toggle(forecast[pointer].cloudCover > 0.75);
+    $('#js-cloud-warning').toggle(forecast[pointer].cloudCover > 0.75);
   }
 
   function getPhaseName(phase) {
@@ -132,16 +132,16 @@ function prevDay() {
   render(dayPointer);
 }
 
-document.getElementById('next-day').addEventListener('click', function() {
+document.getElementById('js-next-day').addEventListener('click', function() {
   nextDay();
 });
 
-document.getElementById('prev-day').addEventListener('click', function() {
+document.getElementById('js-prev-day').addEventListener('click', function() {
   prevDay();
 });
 
 document.addEventListener('keydown', function(event) {
-  if(event.target === document.getElementById('location-finder-input')) {
+  if(event.target === document.getElementById('js-location-finder-input')) {
     return;
   }
   window.console.log(event);

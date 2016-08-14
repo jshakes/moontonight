@@ -1,15 +1,14 @@
 .location-finder {
-  @extend .overlay;
+  @extend .vc-overlay;
   display: none;
   width: 100%;
   z-index: 4;
   .show-location-finder & {
-    display: block; 
+    display: table; 
   }
   .location-finder-fields {
-    @extend .absolute-center;
     text-align: left;
-    width: 75%;
+    padding: 0 25%;
   }
   label {
     display: block;

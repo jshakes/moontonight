@@ -1,15 +1,15 @@
 .loading-screen {
-  @extend .overlay;
+  @extend .vc-overlay;
   display: none;
   z-index: 3;
   .loading & {
-    display: block;
+    display: table;
   }
 }
 
 .satellite-loader {
   @include aspect-ratio(465, 540);
-  @extend .absolute-center;
+  display: inline-block;
   animation: satellite 0.5s steps(4) infinite;
   width: 10em;
   background-image: url('/assets/images/satellite-loading.png');
