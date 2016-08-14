@@ -52,6 +52,7 @@ function render(pointer) {
   setDateEl();
   setPhaseName();
   setButtonDisability();
+  toggleCloudCoverWarning();
 
   function setMoonClass() {
     let moonEl = document.getElementById('moon');
@@ -83,6 +84,10 @@ function render(pointer) {
     else {
       document.getElementById('next-day').removeAttribute('disabled');
     }
+  }
+  
+  function toggleCloudCoverWarning() {
+    $('.cloud-cover-warning').toggle(forecast[pointer].cloudCover > 0.75);
   }
 
   function getPhaseName(phase) {
