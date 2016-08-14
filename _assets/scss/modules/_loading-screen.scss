@@ -1,0 +1,23 @@
+.loading-screen {
+  @extend .overlay;
+  display: none;
+  z-index: 3;
+  .loading & {
+    display: block;
+  }
+}
+
+.satellite-loader {
+  @include aspect-ratio(465, 540);
+  @extend .absolute-center;
+  animation: satellite 0.5s steps(4) infinite;
+  width: 10em;
+  background-image: url('/assets/images/satellite-loading.png');
+  background-size: cover;
+  background-position: 0 0;
+}
+
+@keyframes satellite {
+   from { background-position: 0 0; }
+   to { background-position: 0 -400%; }
+}
