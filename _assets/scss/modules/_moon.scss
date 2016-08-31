@@ -23,14 +23,13 @@ $moon-size: 50vmin;
       height: 100%;
       background: white;
       border-radius: 100%;
-      transition-timing-function: linear;
+      transition: all, 0.25s;
       &.black {
         background: $background-color;
         z-index: 2;
       }
       &.white {
         z-index: 1;
-        transition: width, 0.1s;
         border: 1px solid $background-color;
       }
     }
@@ -60,15 +59,11 @@ $moon-size: 50vmin;
           width: #{($percent - 25) * 8%};
           z-index: 3;
         }
-        @if($percent < 50 and $percent > 46) {
-          transition: none;
-        } 
       }
       &.black {
         @if($percent >= 50 and $percent < 75) {
           left: 100%;
           width: 0;
-          transition: none;
         }
         @if($percent >= 75) {
           left: #{(75 - $percent) * 4%};
