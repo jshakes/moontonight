@@ -149,8 +149,8 @@ function initArrowButtons() {
 function initHammerTime() {
   let moonEl = document.getElementById('js-moon');
   let hammertime = new Hammer(moonEl);
-  hammertime.on('swipeleft', prevDay);
-  hammertime.on('swiperight', nextDay);
+  hammertime.on('swiperight', prevDay);
+  hammertime.on('swipeleft', nextDay);
 }
 
 function initKeyDetection() {
