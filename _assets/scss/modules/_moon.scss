@@ -9,7 +9,7 @@ $moon-size: 50vmin;
   display: inline-block;
   width: $moon-size;
   &.northern-hemisphere {
-    //transform: rotate(180deg);
+    transform: rotate(180deg);
   }
   .half {
     display: inline-block;
