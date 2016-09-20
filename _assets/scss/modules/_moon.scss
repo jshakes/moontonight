@@ -9,7 +9,7 @@ $moon-size: 50vmin;
   display: inline-block;
   width: $moon-size;
   &.northern-hemisphere {
-    transform: rotate(180deg);
+    //transform: rotate(180deg);
   }
   .half {
     display: inline-block;
@@ -35,7 +35,7 @@ $moon-size: 50vmin;
     }
     &:first-child .ellipse {
       &.black {
-        @if($percent > 25 and $percent <= 75) {
+        @if($percent > 25 and $percent < 75) {
           width: 0;
           left: 100%;
         }
@@ -45,27 +45,37 @@ $moon-size: 50vmin;
         }
       }
       &.white {
-        @if($percent >= 50 and $percent < 75) {
+        left: 100%;
+        width: 0;
+        @if($percent <= 50) {
+          left: 0;
+          width: 200%;
+        }
+        @if($percent > 50 and $percent < 75) {
           left: #{($percent - 50) * 4%};
           width: #{(75 - $percent) * 8%};
         }
       }
     }
     &:last-child .ellipse {
-      left: -100%;
+      left: -50%;
+      width: 0;
+      @if($percent <= 25) {
+        visibility: hidden;
+      }
       &.white {
-        @if($percent >= 25 and $percent < 50) {
+        @if($percent > 25 and $percent < 50) {
           left: #{($percent - 25) * -4%};
           width: #{($percent - 25) * 8%};
           z-index: 3;
         }
+        @if($percent >= 50) {
+          width: 200%;
+          left: -100%;
+        }
       }
       &.black {
-        @if($percent >= 50 and $percent < 75) {
-          left: 100%;
-          width: 0;
-        }
-        @if($percent >= 75) {
+        @if($percent > 75) {
           left: #{(75 - $percent) * 4%};
           width: #{($percent - 75) * 8%};
         }
