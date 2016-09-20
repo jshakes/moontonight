@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import Promise from 'bluebird';
 import reqwest from 'reqwest';
+import Hammer from 'hammerjs';
 
 const darkskyKey = '83d3e85b9c73240c30a19c7421f3e752';
 const darkskyApiServer = 'https://api.forecast.io';
@@ -41,6 +42,9 @@ function fetchAndRender(latitude, longitude) {
     forecast = data.daily.data;
     hemisphere = latitude > 0 ? 'north' : 'south';
     render(dayPointer);
+    initHammerTime();
+    initKeyDetection();
+    initArrowButtons();
     $('body').removeClass('loading');
   });
 }
@@ -132,23 +136,33 @@ function prevDay() {
   render(dayPointer);
 }
 
-document.getElementById('js-next-day').addEventListener('click', function() {
-  nextDay();
-});
-
-document.getElementById('js-prev-day').addEventListener('click', function() {
-  prevDay();
-});
-
-document.addEventListener('keydown', function(event) {
-  if(event.target === document.getElementById('js-location-finder-input')) {
-    return;
-  }
-  window.console.log(event);
-  if(event.keyCode === 39) {
+function initArrowButtons() {
+  document.getElementById('js-next-day').addEventListener('click', function() {
     nextDay();
-  }
-  else if(event.keyCode === 37) {
+  });
+
+  document.getElementById('js-prev-day').addEventListener('click', function() {
     prevDay();
-  }
-});
+  });
+}
+
+function initHammerTime() {
+  let moonEl = document.getElementById('js-moon');
+  let hammertime = new Hammer(moonEl);
+  hammertime.on('swipeleft', prevDay);
+  hammertime.on('swiperight', nextDay);
+}
+
+function initKeyDetection() {
+    document.addEventListener('keydown', function(event) {
+    if(event.target === document.getElementById('js-location-finder-input')) {
+      return;
+    }
+    if(event.keyCode === 39) {
+      nextDay();
+    }
+    else if(event.keyCode === 37) {
+      prevDay();
+    }
+  });
+}
