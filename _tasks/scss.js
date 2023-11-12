@@ -1,6 +1,6 @@
 import path from 'path';
 import plumber from 'gulp-plumber';
-import sass from 'gulp-sass';
+const sass = require('gulp-sass')(require('node-sass'))
 import sourcemaps from 'gulp-sourcemaps';
 import postcss from 'gulp-postcss';
 import autoprefixer from 'autoprefixer';

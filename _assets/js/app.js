@@ -4,7 +4,7 @@ import reqwest from 'reqwest';
 import Hammer from 'hammerjs';
 
 const darkskyKey = '83d3e85b9c73240c30a19c7421f3e752';
-const darkskyApiServer = 'https://api.forecast.io';
+const darkskyApiServer = 'https://api.darksky.net';
 const darkskyApiRoute = 'forecast';
 let forecast = [];
 let dayPointer = 0;
@@ -117,13 +117,27 @@ function render(pointer) {
 }
 
 function fetchForecast(latlong) {
-  
+
+  const params = {
+    exclude: 'currently,minutely,hourly,alerts,flags'    
+  };
+  const query = objectToQuerystring(params);
   const url = [darkskyApiServer, darkskyApiRoute, darkskyKey, latlong].join('/');
-  
+    
   return reqwest({
-    url: url,
+    url: url + query,
     type: 'jsonp'
   });
+}
+
+function objectToQuerystring (obj) {
+  return Object.keys(obj).reduce(function (str, key, i) {
+    var delimiter, val;
+    delimiter = (i === 0) ? '?' : '&';
+    key = key;
+    val = obj[key];
+    return [str, delimiter, key, '=', val].join('');
+  }, '');
 }
 
 function nextDay() {
