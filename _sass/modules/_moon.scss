@@ -20,13 +20,15 @@ $moon-size: 50vmin;
 
 @mixin moon($percent) {
   font-size: 0;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
   width: $moon-size;
+  margin: auto;
+
   &.northern-hemisphere {
     transform: rotate(180deg);
   }
   .half {
-    display: inline-block;
     width: $moon-size / 2;
     height: $moon-size;
     overflow: hidden;
@@ -71,27 +73,33 @@ $moon-size: 50vmin;
         }
       }
     }
-    &:last-child .ellipse {
-      left: -50%;
-      width: 0;
-      @if($percent <= 25) {
-        visibility: hidden;
-      }
-      &.white {
-        @if($percent > 25 and $percent < 50) {
-          left: #{($percent - 25) * -4%};
-          width: #{($percent - 25) * 8%};
-          z-index: 3;
+    &:last-child {
+      left: -1px;
+
+      .ellipse {
+        left: -50%;
+        width: 0;
+        @if ($percent <= 25) {
+          visibility: hidden;
         }
-        @if($percent >= 50) {
-          width: 200%;
-          left: -100%;
+
+        &.white {
+          @if ($percent > 25 and $percent < 50) {
+            left: #{($percent - 25) * -4%};
+            width: #{($percent - 25) * 8%};
+            z-index: 3;
+          }
+          @if ($percent >= 50) {
+            width: 200%;
+            left: -100%;
+          }
         }
-      }
-      &.black {
-        @if($percent > 75) {
-          left: #{(75 - $percent) * 4%};
-          width: #{($percent - 75) * 8%};
+
+        &.black {
+          @if ($percent > 75) {
+            left: #{(75 - $percent) * 4%};
+            width: #{($percent - 75) * 8%};
+          }
         }
       }
     }
