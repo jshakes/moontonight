@@ -1,6 +1,3 @@
-import $ from 'jquery';
-import Hammer from 'hammerjs';
-
 let dayPointer = 0;
 
 const SYNODIC_MONTH = 29.53058770576;
@@ -24,13 +21,32 @@ function getHemisphere() {
   return null;
 }
 
+function getMoonPhasePercentage(date) {
+  // Known new moon: January 6, 2000, 18:14 UTC
+  const knownNewMoon = new Date(2000, 0, 6, 18, 14, 0);
+  
+  // Calculate days since known new moon
+  const daysSinceNewMoon = (date.getTime() - knownNewMoon.getTime()) / (1000 * 60 * 60 * 24);
+  
+  // Calculate current position in lunar cycle
+  const cyclePosition = daysSinceNewMoon % SYNODIC_MONTH;
+  
+  // Convert to percentage (0-100)
+  const phasePercentage = (cyclePosition / SYNODIC_MONTH) * 100;
+  
+  return Math.round(phasePercentage);
+}
+
 render(dayPointer);
-initHammerTime();
+initTouchEvents();
 initKeyDetection();
 initArrowButtons();
 
 function render(pointer) {
-  let phasePerc = 44;
+  let currentDate = new Date();
+  currentDate.setDate(currentDate.getDate() + pointer);
+  let phasePerc = getMoonPhasePercentage(currentDate);
+  
   setMoonClass();
   setDateEl();
   setPhaseName();
@@ -105,11 +121,39 @@ function initArrowButtons() {
   });
 }
 
-function initHammerTime() {
+function initTouchEvents() {
   let moonEl = document.getElementById('js-moon');
-  let hammertime = new Hammer(moonEl);
-  hammertime.on('swiperight', prevDay);
-  hammertime.on('swipeleft', nextDay);
+  let startX = 0;
+  let startY = 0;
+  
+  moonEl.addEventListener('touchstart', function(e) {
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+  });
+  
+  moonEl.addEventListener('touchend', function(e) {
+    if (!startX || !startY) return;
+    
+    let endX = e.changedTouches[0].clientX;
+    let endY = e.changedTouches[0].clientY;
+    
+    let diffX = startX - endX;
+    let diffY = startY - endY;
+    
+    // Only trigger if horizontal swipe is greater than vertical
+    if (Math.abs(diffX) > Math.abs(diffY)) {
+      if (Math.abs(diffX) > 50) { // Minimum swipe distance
+        if (diffX > 0) {
+          nextDay(); // Swipe left = next day
+        } else {
+          prevDay(); // Swipe right = previous day
+        }
+      }
+    }
+    
+    startX = 0;
+    startY = 0;
+  });
 }
 
 function initKeyDetection() {
