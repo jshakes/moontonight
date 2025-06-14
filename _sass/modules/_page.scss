@@ -1,7 +1,14 @@
 .page-wrapper {
-  max-width: 100%;
+  max-width: 680px;
   padding: 2em;
-  width: 960px;
   margin: 0 auto;
   text-align: left;
+  
+  p {
+    line-height: 1.6;
+  }
+  
+  li {
+    margin-bottom: 0.5em;
+  }
 }

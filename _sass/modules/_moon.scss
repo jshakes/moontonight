@@ -1,7 +1,21 @@
 $moon-size: 50vmin;
 
 .moon-wrapper {
-  @extend %vc-wrapper;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2em 1em;
+
+  .moon-container h1 {
+    margin-bottom: 2em;
+  }
+}
+
+.day-info-date {
+  display: block;
+  margin-bottom: 0.5em;
 }
 
 @mixin moon($percent) {
