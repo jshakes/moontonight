@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 $moon-size: 50vmin;
 
 .moon-wrapper {
@@ -13,7 +15,7 @@ $moon-size: 50vmin;
   }
   .half {
     display: inline-block;
-    width: $moon-size / 2;
+    width: math.div($moon-size, 2);
     height: $moon-size;
     overflow: hidden;
     position: relative;
@@ -40,8 +42,8 @@ $moon-size: 50vmin;
           left: 100%;
         }
         @if($percent <= 25) {
-          left: #{100 - ((50 -$percent * 2) * 2%)};
-          width: #{(50 -$percent * 2) * 4%};
+          left: #{100 - ((50 - $percent * 2) * 2%)};
+          width: #{(50 - $percent * 2) * 4%};
         }
       }
       &.white {

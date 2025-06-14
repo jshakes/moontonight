@@ -1,22 +1,9 @@
 ---
-bodyclass: loading
+layout: main
 title: The Moon Tonight
 description: Interactive, animated moon phases for tonight and the coming week
 ogimage: /assets/images/moon-tonight-og-image.png
 ---
-
-<div class="loading-screen">
-  <div>
-    <div class="satellite-loader"></div>
-  </div>
-</div>
-
-<div class="location-finder">
-  <div class="location-finder-fields">
-    <label for="location-finder-input">Where are you?</label>
-    <input type="text" id="js-location-finder-input" placeholder="Enter your nearest city or town">
-  </div>
-</div>
 
 <div class="moon-wrapper">
   <div class="moon-container">
@@ -35,14 +22,10 @@ ogimage: /assets/images/moon-tonight-og-image.png
       <div class="day-info">
         <h3 class="day-info-date" id="js-date"></h3>
         <h2 class="day-info-phase-name" id="js-phase-name"></h2>
-        <div class="day-info-cloud-warning" id="js-cloud-warning">
-          <span><strong>Warning</strong><br>It may be too cloudy to see the moon on this night.</span>
-        </div>
       </div>
       <button type="button" id="js-next-day" class="day-info-next"></button>
     </div>
   </div>
 </div>
 
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBD6Cf0D8dK2xgP9axsGvsIAiUHUamoig&libraries=places"></script>
 <script src="{{ "/assets/js/app.js" | prepend: site.baseurl }}"></script>

@@ -1,0 +1,25 @@
+# Site settings
+title: The Moon Tonight
+description: Interactive, animated moon phases for tonight and the coming week
+baseurl: ""
+url: "https://jshakes.github.io"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+plugins:
+  - jekyll-sass-converter
+
+# File handling
+include:
+  - _assets
+
+# Exclude files from processing
+exclude:
+  - README.md
+  - node_modules
+  - package.json
+  - package-lock.json
+  - Gemfile
+  - Gemfile.lock
+  - "*.sublime-*"
