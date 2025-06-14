@@ -1,26 +1,35 @@
 ---
+layout: main
 bodyclass: about
-title: About - The Moon Tonight
-description: Interactive, animated moon phases for tonight and the coming week
+title: The Moon Tonight - About
+description: Learn about The Moon Tonight project - how it works and its history
 ogimage: /assets/images/moon-tonight-og-image.png
 ---
 
 <div class="page-wrapper">
-  <h1>About</h1>
+  <h1>The Moon Tonight - About</h1>
 
-  <p>The Moon Tonight is an experiment by <a href="http://jshakespeare.com" target="_blank">James Shakespeare</a> in using CSS to render the moon in all its possible phases.</p>
-
-  <p>The code is available to view on <a href="https://github.com/jshakes/moontonight">Github</a>.</p>
-
-  <h2>Credits</h2>
-
-  <p>Moon data and weather forecast from <a href="https://developer.forecast.io/" target="_blank">The Dark Sky Forecast API</a>.</p>
-
-  <p>Location autocomplete data from <a href="https://developers.google.com/places/web-service/autocomplete">Google Places Autocomplete</a>.</p>
-
-  <p>Satellite dish icon (used in the loading animation) originally by Arthur Shlain from the Noun Project.</p>
-
-  <p>Cloud icon (used in the cloud cover warning icon) originally by Edward Boatman from the Noun Project.</p>
+  <p>The Moon Tonight is an interactive lunar phase viewer that shows you the current moon phase and lets you explore how it changes over time.</p>
   
-  <p>Font used is <a href="www.colophon-foundry.org/fonts/reader">Reader</a> by Colophon.</p>
+  <p>This project was originally created in 2016 as an experiment in using CSS to render the moon in all its possible phases. It initially relied on the <a href="https://blog.darksky.net/" target="_blank" rel="noopener">Dark Sky API</a> for moon phase data, but went dormant when Apple acquired and promptly shut down the service in 2023. Thanks, Apple!</p>
+  
+  <p>In 2025, the project was rebuilt with a valuable lesson learned: when you need to calculate something as predictable as lunar phases, perhaps don't rely on a third-party API when simple maths will do the job. The moon has been reliably showing up and cycling through its phases for approximately 4.5 billion years—that's about 450 million times longer than Dark Sky existed. It turns out the moon doesn't need an API key or terms of service to continue its work.</p>
+
+  <h2>How It Works</h2>
+
+  <p>The moon phases are calculated using the <a href="https://en.wikipedia.org/wiki/Lunar_month#Synodic_month" target="_blank" rel="noopener">synodic month</a> - the 29.53-day period between successive new moons. We start with a known new moon date (January 6, 2000) and calculate where we are in the current lunar cycle.</p>
+
+  <p>The calculation works like this:</p>
+  <ol>
+    <li>Calculate the number of days since the known new moon</li>
+    <li>Find our position in the current 29.53-day cycle using the <a href="https://en.wikipedia.org/wiki/Modulo" target="_blank" rel="noopener">modulo operation</a></li>
+    <li>Convert this to a percentage (0-100) representing the lunar phase</li>
+    <li>Apply CSS classes to render the visual moon phase</li>
+  </ol>
+
+  <p>The visual moon phases are created entirely with CSS, using positioned circular elements to simulate the shadow and illumination of the moon as seen from Earth.</p>
+
+  <p>The font used is <a href="https://www.colophon-foundry.org/fonts/reader" target="_blank" rel="noopener">Reader</a> by Colophon Foundry.</p>
+
+  <p>The code is available to view on <a href="https://github.com/jshakes/moontonight" target="_blank" rel="noopener">Github</a>.</p>
 </div>

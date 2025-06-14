@@ -1,45 +1,57 @@
-# Front-end boilerplate
+# The Moon Tonight 🌓
 
-## Requirements
+An interactive lunar phase viewer that shows you the current moon phase and lets you explore how it changes over time.
 
-- Ruby 2.1+
-- Node 5.0+
+## 🔗 [View Live Site](https://jshakes.github.io/moontonight/)
 
-## Installation
+## Overview
 
-- `npm install -g frot`
-- `frot [path]`
+The Moon Tonight renders moon phases entirely with CSS and calculates lunar cycles using pure mathematics—no external APIs required. Navigate through different dates using the arrow buttons, keyboard arrows, or touch gestures to see how the moon appears on any given day.
 
-## Folder Structure
+## Features
 
-The demo project homepage contains a detailed project structure explanation. See development section to learn how to build and see the homepage.
+- **Accurate lunar calculations** using the synodic month (29.53-day cycle)
+- **Pure CSS moon rendering** with realistic shadow and illumination
+- **Touch and keyboard navigation** for exploring different dates
+- **Responsive design** that works on all devices
+- **No external dependencies** or API calls
 
-## Development
+## How It Works
 
-- Run `gulp watch`
-- Open [http://127.0.0.1:8080](http://127.0.0.1:8080) in your browser.
-- Livereload is enabled by default.
-- Make sure your code editor / IDE has ESLint support.
+Moon phases are calculated using a known new moon date (January 6, 2000) and the synodic month period. The app calculates the number of days since that reference point, finds the current position in the 29.53-day cycle, and converts this to a percentage that drives the CSS-based visual representation.
 
-## Building
+## Running Locally
 
-- `gulp clean` to cleanup the output folder.
-- `gulp build` to build and optimize / minify assets.
-- See build settings in `_config` dir.
+### Requirements
+- Ruby 2.7+
+- Bundler
 
-## Deployment
+### Setup
+```bash
+git clone https://github.com/jshakes/moontonight.git
+cd moontonight
+bundle install
+```
 
-- `gulp surge` for Surge deployment.
-- `gulp rsync` for SSH deployment via RSync.
-- See deployment settings in `_config` dir.
+### Development
+```bash
+npm run dev
+# Opens at http://localhost:4000
+```
 
-## Components
+### Building
+```bash
+npm run build
+```
 
-- Try to follow the concept of components when developing the front-end.
--  Types of Components
-  - _Page Blocks_ are components that are not related to the actual content (eg. header and footer).
-  - _Regular Components_ are elementary blocks, used to build the content.
-- Regular components should be flexible enough to be reused on any other page.
-- Each component should have a dedicated partial in `_source/_includes/components` (Unless it's a ReactJS Component).
-- Each component should have a dedicated stylesheet in `_assets/scss/components`
-- If the component requires JS or is a ReactJS component, it should have a dedicated JS in `_assets/js/components`
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request. ✨
+
+## Project History
+
+Originally created in 2016, this project initially relied on the Dark Sky API for moon phase data. When Apple shut down Dark Sky in 2023, it was rebuilt to calculate moon phases mathematically—proving that sometimes the simplest solution is the best one.
+
+## License
+
+MIT

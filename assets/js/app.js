@@ -130,6 +130,12 @@ function initTouchEvents() {
   moonEl.addEventListener('touchstart', function(e) {
     startX = e.touches[0].clientX;
     startY = e.touches[0].clientY;
+    e.preventDefault(); // Prevent page scrolling during touch
+  });
+  
+  moonEl.addEventListener('touchmove', function(e) {
+    // Prevent scrolling while touching the moon
+    e.preventDefault();
   });
   
   moonEl.addEventListener('touchend', function(e) {

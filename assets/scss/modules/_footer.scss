@@ -1,9 +1,14 @@
 .site-footer {
-  position: absolute;
+  position: fixed;
   width: 100%;
   bottom: 0;
   z-index: 3;
   padding: 1em;
   font-size: .75em;
   color: rgba(255, 255, 255, 0.5);
+  
+  @media (max-height: 600px) {
+    position: static;
+    margin-top: 2em;
+  }
 }

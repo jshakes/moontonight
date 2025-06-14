@@ -45,25 +45,3 @@
   }
 }
 
-.day-info-prev {
-  @include icon(arrow-left);
-}
-
-.day-info-next {
-  @include icon(arrow-right);
-}
-
-.day-info-cloud-warning {
-  @include icon(cloud-warning, 1, 3em);
-  display: none;
-  position: relative;
-  margin: 1em 0 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.5);
-  padding: 1em 0 1em 4em;
-  bottom: 0;
-  text-align: left;
-  &:before {
-    @extend .absolute-center-vertical;
-    left: 0;
-  }
-}
