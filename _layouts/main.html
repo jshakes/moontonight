@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,18 +12,54 @@
   {% if page.description %}
   <meta name="description" content="{{page.description}}">
   {% endif %}
+  
+  <meta name="keywords" content="moon phase, lunar calendar, astronomy, moon tonight, lunar phase, full moon, new moon">
+  <meta name="author" content="James Shakespeare">
+  <link rel="canonical" href="{{ page.url | prepend: site.url }}">
 
   <link rel="stylesheet" href="{{ "assets/css/main.css" | prepend: site.baseurl }}">
+  
+  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ page.url | prepend: site.url }}">
   <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+  <meta property="og:site_name" content="{{ site.title }}">
 
   {% if page.ogimage %}
-  <meta property="og:image" content="{{page.ogimage}}">
+  <meta property="og:image" content="{{ page.ogimage | prepend: site.url }}">
+  <meta property="og:image:alt" content="Moon phase illustration">
   {% endif %}
 
   {% if page.description %}
   <meta property="og:description" content="{{page.description}}">
   {% endif %}
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+  {% if page.description %}
+  <meta property="twitter:description" content="{{page.description}}">
+  {% endif %}
+  {% if page.ogimage %}
+  <meta property="twitter:image" content="{{ page.ogimage | prepend: site.url }}">
+  {% endif %}
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "{{ site.title }}",
+    "description": "{{ page.description }}",
+    "url": "{{ page.url | prepend: site.url }}",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Web Browser",
+    "author": {
+      "@type": "Person",
+      "name": "James Shakespeare"
+    }
+  }
+  </script>
 </head>
 
 <body{% if page.bodyclass %} class="{{ page.bodyclass }}"{% endif %}>

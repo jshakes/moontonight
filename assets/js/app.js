@@ -62,6 +62,7 @@ function render(pointer) {
     let dateEl = document.getElementById('js-date');
     date.setDate(date.getDate() + pointer);
     dateEl.innerHTML = date.toDateString();
+    dateEl.setAttribute('datetime', date.toISOString().split('T')[0]);
   }
   
   function setPhaseName() {

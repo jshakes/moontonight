@@ -5,27 +5,36 @@ description: Interactive, animated moon phases for tonight and the coming week
 ogimage: /assets/images/moon-tonight-og-image.png
 ---
 
-<div class="moon-wrapper">
+<main class="moon-wrapper">
   <div class="moon-container">
-    <div class="moon-illustration" id="js-moon">
-      <div class="half">
+    <h1 class="visually-hidden">The Moon Tonight</h1>
+    
+    <figure class="moon-illustration" id="js-moon" role="img" aria-labelledby="js-phase-name" aria-describedby="js-date">
+      <div class="half" aria-hidden="true">
         <div class="ellipse white"></div>
         <div class="ellipse black"></div>
       </div>
-      <div class="half">
+      <div class="half" aria-hidden="true">
         <div class="ellipse white"></div>
         <div class="ellipse black"></div>
       </div>
-    </div>
-    <div class="day-info-wrapper">
-      <button type="button" id="js-prev-day" class="day-info-prev"></button>
+    </figure>
+    
+    <nav class="day-info-wrapper" aria-label="Moon phase navigation">
+      <button type="button" id="js-prev-day" class="day-info-prev" aria-label="Previous day">
+        <span aria-hidden="true">‹</span>
+      </button>
+      
       <div class="day-info">
-        <h3 class="day-info-date" id="js-date"></h3>
+        <time class="day-info-date" id="js-date" datetime=""></time>
         <h2 class="day-info-phase-name" id="js-phase-name"></h2>
       </div>
-      <button type="button" id="js-next-day" class="day-info-next"></button>
-    </div>
+      
+      <button type="button" id="js-next-day" class="day-info-next" aria-label="Next day">
+        <span aria-hidden="true">›</span>
+      </button>
+    </nav>
   </div>
-</div>
+</main>
 
 <script src="{{ "/assets/js/app.js" | prepend: site.baseurl }}"></script>
