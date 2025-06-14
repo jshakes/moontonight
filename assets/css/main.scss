@@ -1,15 +1,15 @@
 ---
 ---
-@import '../scss/base/normalize';
-@import '../scss/base/defaults';
-@import '../scss/base/colors';
-@import '../scss/base/media-queries';
-@import '../scss/base/webfonts';
-@import '../scss/base/body';
+@import 'base/normalize';
+@import 'base/defaults';
+@import 'base/colors';
+@import 'base/media-queries';
+@import 'base/webfonts';
+@import 'base/body';
 
-@import '../scss/common/helpers';
+@import 'common/helpers';
 
-@import '../scss/modules/moon';
-@import '../scss/modules/day-info';
-@import '../scss/modules/footer';
-@import '../scss/modules/page';
+@import 'modules/moon';
+@import 'modules/day-info';
+@import 'modules/footer';
+@import 'modules/page';

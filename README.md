@@ -1,11 +1,5 @@
 # The Moon Tonight 🌒🌓🌔🌕🌖🌗🌘
 
-An interactive lunar phase viewer that shows you the current moon phase and lets you explore how it changes over time.
-
-## 🔗 [View Live Site](https://jshakes.github.io/moontonight/)
-
-## Overview
-
 The Moon Tonight renders moon phases entirely with simple maths and CSS. Navigate through different dates using the arrow buttons, keyboard arrows, or touch gestures to see how the moon appears on any given day.
 
 ## How It Works
