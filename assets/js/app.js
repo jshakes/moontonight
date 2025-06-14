@@ -164,10 +164,7 @@ function initTouchEvents() {
 }
 
 function initKeyDetection() {
-    document.addEventListener('keydown', function(event) {
-    if(event.target === document.getElementById('js-location-finder-input')) {
-      return;
-    }
+  document.addEventListener('keydown', function(event) {
     if(event.keyCode === 39) {
       nextDay();
     }

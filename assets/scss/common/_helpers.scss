@@ -1,10 +1,5 @@
 @use 'sass:math';
 
-body.noscroll {
-  overflow: hidden;
-  position: fixed;
-}
-
 .visually-hidden {
   position: absolute !important;
   width: 1px !important;
@@ -17,72 +12,6 @@ body.noscroll {
   border: 0 !important;
 }
 
-.textreplace {
-  display: block;
-  padding: 0;
-  text-indent: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.textreplace-sr {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-}
-
-%fullsize, .fullsize {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-
-%defullsize {
-  position: static;
-  top: auto;
-  right: auto;
-  bottom: auto;
-  left: auto;
-}
-
-.test-overlay {
-  -webkit-filter:invert(100%);
-  filter:invert(100%);
-  filter:progid:DXImageTransform.Microsoft.BasicImage(invert='1');
-  position: absolute;
-  z-index: 999999;
-  opacity: .5;
-  top: 0;
-  left: 0;
-  width: 100%;
-}
-
-.absolute-center {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.absolute-center-vertical {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.absolute-center-horizontal {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
 // vertical center
 %vc-wrapper {
   display: table;
@@ -92,52 +21,4 @@ body.noscroll {
     display: table-cell;
     vertical-align: middle;
   }
-}
-
-
-@mixin aspect-ratio($width, $height) {
-  position: relative;
-  &:before {
-    display: block;
-    content: "";
-    width: 100%;
-    padding-top: math.div($height, $width) * 100%;
-  }
-}
-
-@mixin remove-aspect-ratio() {
-  position: relative;
-  &:before {
-    display: none;
-  }
-}
-
-@mixin background-overlay($color) {
-  &:after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: $color;
-  }
-}
-
-@function em($pixels, $dens: 1) {
-  @return $pixels / $base-font-size / $dens * 1em;
-}
-
-@function rem($pixels, $dens: 1) {
-  @return $pixels / $base-font-size / $dens * 1rem;
-}
-
-@function em2rem($em) {
-  @return deunit($em) * 1rem;
-}
-
-@function rem2em($rem) {
-  @return deunit($rem) * 1em;
-}
-
-@function deunit($value) {
-  @return $value / ($value * 0 + 1);
 }
